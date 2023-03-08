@@ -57,7 +57,7 @@
     <!-- /.navbar -->
 
 
-    @include('admin.include.sidebar')   <!-- ищет всегда с view-->
+    @include('personal.include.sidebar')   <!-- ищет всегда с view-->
     @yield('content')
 
     <footer class="main-footer">

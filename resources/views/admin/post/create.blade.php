@@ -77,7 +77,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Выберите категорию</label>
+                            <label>Выберите Роль</label>
                             <select name="category_id" class="form-control">
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}"
