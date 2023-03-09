@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        return view('main.index');// возвращаем view
-    }//однометодные котроллеры без action(я не ебу что это на данном этапе развития)
-    //invoke означает когда мы будет обращаться к контроллеру в web.php, автоматом будет вызываться этот метод
-    // который будет подразуменяться action по умолчанию(какого хуя)
+        $posts=Post::paginate(6);
+
+        $randomPosts=Post::get()->random(4);
+        $likedPosts=Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
+        return view('main.index', compact('posts','randomPosts', 'likedPosts'));
+    }
 }

@@ -9,12 +9,12 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class DeleteController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Post $post)
     {
 
-        $posts=auth()->user()->likedPosts;
-        return view('personal.liked.index', compact('posts'));// возвращаем view
+        auth()->user()->likedPosts()->detach($post->id);
+        return redirect()->route('personal.liked.index');
     }
 }

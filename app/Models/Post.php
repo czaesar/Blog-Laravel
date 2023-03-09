@@ -14,9 +14,20 @@ class Post extends Model
     protected $table= "posts"; // это правило шоб мы могли изменять данные в таблице
     protected $guarded= false;
 
+
     public  function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function likedUsers()
+    {
+        return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id' );
     }
 }
 
