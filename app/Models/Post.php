@@ -14,6 +14,8 @@ class Post extends Model
     protected $table= "posts"; // это правило шоб мы могли изменять данные в таблице
     protected $guarded= false;
 
+    protected $withCount=['likedUsers'];
+
 
     public  function tags()
     {
